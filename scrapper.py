@@ -1,4 +1,5 @@
 gallery_url = r"https://azurlane.koumakan.jp/wiki/List_of_Ships_by_Image"
+from typing import Any
 import attr
 from bs4 import BeautifulSoup
 
@@ -32,7 +33,12 @@ for scan in gallery:
 
 
 def getFull(shipUrl):
-    
+    fullPage = requests.get("https://azurlane.koumakan.jp" + shipUrl)
+    fullSoup = BeautifulSoup(fullPage.text, "html.parser")
+    spriteDiv: Any = fullSoup.find("div", class_="CG-sprite", recursive=True)
+    sprite = spriteDiv.find("span").find("a").find("img")
+    return sprite["src"]
+
 
 with open("gallery.json", "w", encoding="utf-8") as f:
     f.write(json.dumps(ships, ensure_ascii=False))
