@@ -4,16 +4,13 @@ import logging
 from random import randint
 import sys
 from os import getenv
-
-from aiogram import Bot, Dispatcher, html
+from aiogram import Bot, Dispatcher
 from aiogram.client.default import DefaultBotProperties
 from aiogram.enums import ParseMode
 from aiogram.filters import CommandStart
 from aiogram.types import Message, KeyboardButton, ReplyKeyboardMarkup
 from aiogram import F
-
 from dotenv import load_dotenv
-
 from scrapper import getFull
 
 load_dotenv()
@@ -42,7 +39,6 @@ async def command_start_handler(message: Message):
         [KeyboardButton(text="Фулл")],
     ]
     keyboard = ReplyKeyboardMarkup(keyboard=kb)
-
     await message.answer("Что зароллить?", reply_markup=keyboard)
 
 

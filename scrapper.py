@@ -1,6 +1,5 @@
 gallery_url = r"https://azurlane.koumakan.jp/wiki/List_of_Ships_by_Image"
 from typing import Any
-import attr
 from bs4 import BeautifulSoup
 
 import json
@@ -27,9 +26,6 @@ for scan in gallery:
         ships[rarity] = {}
 
     ships[rarity][title] = ship
-
-    # print(scan.find("span").find("a")["title"])
-    # print(scan)
 
 
 def getFull(shipUrl):
