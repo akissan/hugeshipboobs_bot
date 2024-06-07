@@ -1,0 +1,1 @@
+pm2 start main.py --interpreter=.venv/bin/python3 --name=ships
